@@ -1,0 +1,16 @@
+file_name1="D:\project\insat 3dr\New folder\3RIMG_06MAR2024_0015_L2B_CTP_V01R00.h5";
+info=h5info(f1);
+name1={info.Datasets.Name};
+ctp=h5read(f1,'/CTP');
+
+lat_grid = 0:0.5:40;
+lon_grid = 50:0.5:100;
+
+grid_ctp1(1:length(lon_grid),1:length(lat_grid))=NaN; 
+latitude = h5read(file_name1, '/Latitude');
+longitude = h5read(file_name1, '/Longitude');
+CTP = h5read(file_name1, '/CTP');
+
+kerala_lon_indices = find(longitude >= lon_grid(1) & longitude <= lon_grid(2));
+            kerala_lat_indices = find(latitude >= lat_grid(1) & latitude <= lat_grid(2));
+ res = [kerala_lon_indices; kerala_lat_indices];
