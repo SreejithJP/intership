@@ -1,0 +1,19 @@
+COMPARE JAN 
+
+% Load the MODIS variable from the MAT file
+load('D:\project\MODIS_1_JAN\mean_jan_modis.mat');
+
+% Load the variable from the MAT file
+load("D:\project\INSAT\compare_insat.mat");
+
+% Plot both variables
+figure;
+plot(1:numel(mean_ctp_per_day_jan), mean_ctp_per_day_jan, 'o-', 'LineWidth', 2);
+hold on;
+plot(1:numel(mean_ctp_per_day_modis), mean_ctp_per_day_modis, 'o-', 'LineWidth', 2);
+hold off;
+xlabel('Date');
+ylabel('Mean CTP');
+title('Comparison of Mean CTP for Each Day of January 2023 (INSAT vs MODIS)');
+legend('INSAT', 'MODIS');
+grid on;
